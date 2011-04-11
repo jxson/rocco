@@ -27,9 +27,9 @@ class Rocco::Layout < Mustache
         :header?    =>  is_header,
 
         :code       =>  code,
-        :code?      =>  !code.empty?,
+        :code?      =>  (code.nil?) ? false : !code.empty?,
 
-        :empty?     =>  ( code.empty? && docs.empty? ),
+        :empty?     =>  (code.nil?) ? true : ( code.empty? && docs.empty? ),
         :section_id =>  is_header ? header_text : num
       }
     end
